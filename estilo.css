@@ -116,16 +116,74 @@
     font-size: 1.5em;
   }
   
+
+  .container .thumb {
+    position:absolute;
+    bottom: 50px;
+    left:50%;
+    display:flex;
+    gap: 20px;
+  }
+
+  .container .thumb .thumb-item{
+    width: 135px;
+    height: 200px;
+    position: relative;
+
+  }
+
+  .container .thumb .thumb-item img{
+    width:100%;
+    header: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    filter: brightness(80%);
+  }
+
+  .container .thumb .content{
+    position:absolute;
+    bottom: 10px;
+    left:10px;
+
+  }
+
+
+
   /* Botões */
+  .container .arrows{
+    display:flex;
+    align-itens: center;
+    gap:10px;
+    position: absolute;
+    bottom:120px;
+    left:125px;
+    width: 300px;
+  }
+
+  .container .arrows button{
+    border-radius: 10px;
+    border:none;
+    padding:12px 17px;
+    background-color: #eee4;
+    color:white;
+    cursor: pointer;]
+    font-weight: 700;
+    font-size: 1.5em;
+
+  }
+
+  .container .arrows button:hover{
+    background:white;
+    color:black;
+    transition: 0.9s;
+  }
+
+
+
+
   .buttons {
     margin-top: 15px;
   }
-  
-  .container .list .list-item .buttons{
-    
-  }
-
-
 
 
   .buttons button {
@@ -144,14 +202,5 @@
     background-color: #ccc;
   }
   
-  /* Rodapé */
-  footer {
-    background-color: #111;
-    color: #888;
-    text-align: center;
-    padding: 20px;
-    font-size: 12px;
-    position: relative;
-    z-index: 5;
-  }
+
 
