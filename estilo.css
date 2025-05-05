@@ -1,206 +1,293 @@
 /* Reset e base */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: "Poppins", sans-serif;
-  }
-  
-  body {
-    background-color: #000;
-    color: #eee;
-    font-size: 12px;
-  }
-  
-  /* Header / Menu */
-  header {
-    width: 80%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-    margin: auto;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
 
-  header a{
-    color: #eee;
-    margin-right: 40px;
-    font-weight: 300;
-  }
-  
-  nav ul {
-    display: flex;
-    list-style: none;
-    gap: 40px;
-  }
-  
-  nav ul li a {
-    color: #eee;
-    font-weight: 300;
-    font-size: 14px;
-    transition: color 0.3s;
-  }
-  
-  nav ul li a:hover {
-    color: #ccc;
-  }
+body {
+  background-color: #000;
+  color: #eee;
+  font-size: 12px;
+}
 
-  nav ul li a {
-    position: relative;
-    color: #eee;
-    display: inline-block;
-    padding-bottom: 5px;
-    font-size: 18px;
-    font-weight: 600;
+/* Header / Menu */
+header {
+  width: 80%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  margin: auto;
+}
+
+header a {
+  color: #eee;
+  margin-right: 40px;
+  font-weight: 300;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+}
+
+nav ul li a {
+  color: #eee;
+  font-weight: 300;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #ccc;
+}
+
+nav ul li a {
+  position: relative;
+  color: #eee;
+  display: inline-block;
+  padding-bottom: 5px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #eee;
+  transition: width 0.4s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* Container principal */
+.container {
+  height: 100vh;
+  width: 100vw;
+  margin-top: -50px; /* ajusta para compensar o header */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Cada item da lista (destino) */
+.container .list .list-item {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+/* Imagem de fundo */
+.container .list .list-item img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  filter: brightness(50%);
+}
+
+/* Texto sobre a imagem */
+.container .list .list-item .content {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  right: 10%;
+  color: #eee;
+  text-shadow: 0 5px 10px #0004;
+  max-width: 600px;
+}
+
+.container .list .list-item .title {
+  font-size: 3em;
+  font-weight: 700;
+  line-height: 1.3em;
+}
+
+.container .list .list-item .description {
+  font-size: 1.5em;
+}
+
+/* Adicionando mais espaçamento entre as letras nos parágrafos */
+.container .list .list-item .content p {
+  letter-spacing: 1px; /* Ajuste conforme necessário */
+  line-height: 1.8em; /* Distância entre as linhas */
+}
+
+/* Miniaturas (thumbs) */
+.container .thumb {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  display: flex;
+  gap: 20px;
+  transform: translateX(0); /* Posição inicial para animar */
+}
+
+.container .thumb .thumb-item {
+  width: 135px;
+  height: 200px;
+  position: relative;
+  z-index: 3;
+}
+
+.container .thumb .thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  filter: brightness(80%);
+}
+
+.container .thumb .content {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+/* Botões */
+.container .arrows {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  bottom: 120px;
+  left: 125px;
+  width: 300px;
+}
+
+.container .arrows button {
+  border-radius: 10px;
+  border: none;
+  padding: 12px 17px;
+  background-color: #eee4;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.container .arrows button:hover {
+  background: white;
+  color: black;
+  transition: 0.9s;
+}
+
+.buttons {
+  margin-top: 15px;
+}
+
+.buttons button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid;
+  padding: 8px 16px;
+  margin-right: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+  background-color: #ccc;
+}
+
+/* Transições e animações */
+.list-item,
+.thumb-item {
+  transition: all 0.4s ease-in-out;
+}
+
+/* Movimento da Thumb (animação quando "next" é clicado) */
+.container.next .thumb {
+  animation: effectNextThumb 0.5s linear 1 forwards;
+}
+
+@keyframes effectNextThumb {
+  from {
+    transform: translateX(150px);
   }
-  
-  nav ul li a::after {
-    content: '';
-    position: absolute;
+}
+
+.container.next .thumb .thumb-item:nth-last-child(1) {
+  animation: effectLastThumb 0.5s linear forwards;
+}
+
+@keyframes effectLastThumb {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 135px; /* ou a largura padrão da thumb */
+    opacity: 1;
+  }
+}
+
+/* Animações de conteúdo */
+.container .list .list-item:nth-last-child(1) .content .title,
+.container .list .list-item:nth-last-child(1) .content p,
+.container .list .list-item:nth-last-child(1) .content .buttons {
+  transform: translateY(50px);
+  filter: blur(20px);
+  opacity: 0;
+  animation: showContent 0.5s 1s linear 1 forwards;
+}
+
+@keyframes showContent {
+  to {
+    transform: translateY(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* Imagem principal no início */
+.container .list .list-item:nth-last-child(1) img {
+  width: 150px;
+  height: 220px;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  border-radius: 30px;
+  animation: showMainImage 0.5s linear 1 forwards;
+}
+
+@keyframes showMainImage {
+  to {
     bottom: 0;
     left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #eee;
-    transition: width 0.4s ease;
-  }
-  
-  nav ul li a:hover::after {
-    width: 100%;
-  }
-  
-  /* Container principal */
-  .container {
-    height: 100vh;
-    width: 100vw;
-    margin-top: -50px; /* ajusta para compensar o header */
-    overflow: hidden;
-    position: relative;
-  }
-  
-  /* Cada item da lista (destino) */
-  .container .list .list-item {
     width: 100%;
     height: 100%;
-    position: absolute;
+    border-radius: 0;
   }
-  
-  /* Imagem de fundo */
-  .container .list .list-item img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    filter: brightness(50%);
-  }
-  
-  /* Texto sobre a imagem */
-  .container .list .list-item .content {
-    position: absolute;
-    top: 20%;
-    left: 10%;
-    right: 10%;
-    color: #eee;
-    text-shadow: 0 5px 10px #0004;
-    max-width: 600px;
-  }
-  
-  .container .list .list-item .title {
-    font-size: 3em;
-    font-weight: 700;
-    line-height: 1.3em;
-  }
-  
-  .container .list .list-item .description {
-    font-size: 1.5em;
-  }
-  
+}
 
-  .container .thumb {
-    position:absolute;
-    bottom: 50px;
-    left:50%;
-    display:flex;
-    gap: 20px;
-  }
+/* Animação de voltar a imagem ao tamanho original (ao clicar no "back") */
+.container.back .list .list-item:nth-child(1) img {
+  position:absolute;
+  bottom:0;
+  left:0;
+  animation: hideMainImage 1s linear 1 forwards;
+  z-index:2;
+}
 
-  .container .thumb .thumb-item{
+@keyframes hideMainImage {
+  to {
     width: 135px;
     height: 200px;
-    position: relative;
-
-  }
-
-  .container .thumb .thumb-item img{
-    width:100%;
-    header: 100%;
-    object-fit: cover;
     border-radius: 10px;
-    filter: brightness(80%);
+    left: 50%;
+    bottom: 50px;
   }
-
-  .container .thumb .content{
-    position:absolute;
-    bottom: 10px;
-    left:10px;
-
-  }
-
-
-
-  /* Botões */
-  .container .arrows{
-    display:flex;
-    align-itens: center;
-    gap:10px;
-    position: absolute;
-    bottom:120px;
-    left:125px;
-    width: 300px;
-  }
-
-  .container .arrows button{
-    border-radius: 10px;
-    border:none;
-    padding:12px 17px;
-    background-color: #eee4;
-    color:white;
-    cursor: pointer;]
-    font-weight: 700;
-    font-size: 1.5em;
-
-  }
-
-  .container .arrows button:hover{
-    background:white;
-    color:black;
-    transition: 0.9s;
-  }
-
-
-
-
-  .buttons {
-    margin-top: 15px;
-  }
-
-
-  .buttons button {
-    background-color: transparent;
-    color: white;
-    border:1px solid;
-    padding: 8px 16px;
-    margin-right: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .buttons button:hover {
-    background-color: #ccc;
-  }
-  
-
+}
 
