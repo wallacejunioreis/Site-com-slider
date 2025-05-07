@@ -27,3 +27,12 @@ function moveItemsOnclick(type) {
     container.classList.remove('back');
   }, 3000); // tempo menor, igual ao da animação
 }
+
+// Obtendo os elementos
+let hamburgerMenu = document.getElementById('hamburger-menu');
+let menu = document.getElementById('menu');
+
+// Adicionando um evento de clique no ícone de hambúrguer
+hamburgerMenu.addEventListener('click', () => {
+  menu.classList.toggle('open'); // Alterna a classe 'open' que mostra/esconde o menu
+});

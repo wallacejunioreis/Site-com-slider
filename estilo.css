@@ -1,4 +1,6 @@
-/* Reset e base */
+/* ===============================
+   Reset e Base
+=============================== */
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +15,9 @@ body {
   font-size: 12px;
 }
 
-/* Header / Menu */
+/* ===============================
+   Header / Menu
+=============================== */
 header {
   width: 80%;
   height: 50px;
@@ -71,23 +75,29 @@ nav ul li a:hover::after {
   width: 100%;
 }
 
-/* Container principal */
+/* ===============================
+   Container Principal
+=============================== */
 .container {
   height: 100vh;
   width: 100vw;
-  margin-top: -50px; /* ajusta para compensar o header */
+  margin-top: -50px; /* Ajusta para compensar o header */
   overflow: hidden;
   position: relative;
 }
 
-/* Cada item da lista (destino) */
+/* ===============================
+   Cada Item da Lista (Destino)
+=============================== */
 .container .list .list-item {
   width: 100%;
   height: 100%;
   position: absolute;
 }
 
-/* Imagem de fundo */
+/* ===============================
+   Imagem de Fundo
+=============================== */
 .container .list .list-item img {
   object-fit: cover;
   width: 100%;
@@ -95,7 +105,9 @@ nav ul li a:hover::after {
   filter: brightness(50%);
 }
 
-/* Texto sobre a imagem */
+/* ===============================
+   Texto Sobre a Imagem
+=============================== */
 .container .list .list-item .content {
   position: absolute;
   top: 20%;
@@ -116,13 +128,17 @@ nav ul li a:hover::after {
   font-size: 1.5em;
 }
 
-/* Adicionando mais espaçamento entre as letras nos parágrafos */
+/* ===============================
+   Adicionando Mais Espaçamento Entre as Letras nos Parágrafos
+=============================== */
 .container .list .list-item .content p {
   letter-spacing: 1px; /* Ajuste conforme necessário */
   line-height: 1.8em; /* Distância entre as linhas */
 }
 
-/* Miniaturas (thumbs) */
+/* ===============================
+   Miniaturas (Thumbs)
+=============================== */
 .container .thumb {
   position: absolute;
   bottom: 50px;
@@ -153,7 +169,9 @@ nav ul li a:hover::after {
   left: 10px;
 }
 
-/* Botões */
+/* ===============================
+   Botões
+=============================== */
 .container .arrows {
   display: flex;
   align-items: center;
@@ -201,7 +219,9 @@ nav ul li a:hover::after {
   background-color: #ccc;
 }
 
-/* Transições e animações */
+/* ===============================
+   Transições e Animações
+=============================== */
 .list-item,
 .thumb-item {
   transition: all 0.4s ease-in-out;
@@ -233,7 +253,9 @@ nav ul li a:hover::after {
   }
 }
 
-/* Animações de conteúdo */
+/* ===============================
+   Animações de Conteúdo
+=============================== */
 .container .list .list-item:nth-last-child(1) .content .title,
 .container .list .list-item:nth-last-child(1) .content p,
 .container .list .list-item:nth-last-child(1) .content .buttons {
@@ -251,7 +273,9 @@ nav ul li a:hover::after {
   }
 }
 
-/* Imagem principal no início */
+/* ===============================
+   Imagem Principal no Início
+=============================== */
 .container .list .list-item:nth-last-child(1) img {
   width: 150px;
   height: 220px;
@@ -272,7 +296,9 @@ nav ul li a:hover::after {
   }
 }
 
-/* Animação de voltar a imagem ao tamanho original (ao clicar no "back") */
+/* ===============================
+   Animação de Voltar a Imagem ao Tamanho Original (Ao Clicar no "Back")
+=============================== */
 .container.back .list .list-item:nth-child(1) img {
   position:absolute;
   bottom:0;
@@ -291,3 +317,125 @@ nav ul li a:hover::after {
   }
 }
 
+/* ===============================
+   Responsividade
+=============================== */
+
+/* Para telas muito pequenas (celulares) */
+@media (max-width: 480px) {
+  .container .list .list-item .content {
+    top: 20%;
+    left: 5%;
+    right: 5%;
+    font-size: 1.1em;
+    max-width: 90%;
+    text-align: center; /* Centraliza o conteúdo */
+  }
+
+  .container .list .list-item .title {
+    font-size: 2em;
+  }
+
+  .container .list .list-item .description {
+    font-size: 1.1em;
+  }
+
+  /* Miniaturas */
+  .container .thumb .thumb-item {
+    width: 90px;
+    height: 130px;
+  }
+
+  /* Posicionamento dos botões "Saiba Mais" e "Acessar" */
+  .container .list .list-item .buttons {
+    position: relative;
+    margin-top: 20px;  /* Espaçamento entre os botões */
+  }
+
+  /* Botões de navegação (Next e Back) no canto esquerdo da tela */
+  .container .arrows {
+    position: fixed; 
+    bottom: 20px; /* Distância da parte inferior da tela */
+    left: 20px; /* Distância da borda esquerda */
+    gap: 10px;
+    flex-direction: column; /* Coloca os botões em coluna */
+    align-items: flex-start;
+    z-index: 10; /* Garantir que os botões fiquem acima dos outros elementos */
+  }
+
+  /* Ajuste do botão de navegação */
+  .container .arrows button {
+    font-size: 1.2em;
+    padding: 10px 15px;
+    background-color: #eee4; /* Cor do fundo */
+    color: white;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px; /* Espaçamento entre os botões */
+  }
+
+  /* Efeito de hover */
+  .container .arrows button:hover {
+    background: white;
+    color: black;
+    transition: 0.9s;
+  }
+}
+
+/* ===============================
+   Menu Hambúrguer
+=============================== */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hamburger-menu .bar {
+  width: 30px;
+  height: 3px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+/* Menu em telas pequenas */
+@media (max-width: 768px) {
+  /* Esconde o menu na versão normal */
+  .menu {
+    display: none;
+  }
+
+  /* Exibe o ícone de hambúrguer */
+  .hamburger-menu {
+    display: flex;
+  }
+
+  /* Menu visível ao clicar no hambúrguer */
+  .menu.open {
+    display: block;
+    position: absolute;
+    top: 60px; /* Ajuste o valor dependendo da altura do cabeçalho */
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .menu.open li {
+    padding: 10px;
+  }
+
+  .menu.open a {
+    color: #fff;
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  .menu.open a:hover {
+    color: #ccc;
+  }
+}
